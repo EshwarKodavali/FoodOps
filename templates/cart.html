@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodOps | Cart</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body class="menu-page">
+
+
+    <nav class="food-navbar">
+
+        <div class="food-logo-text">
+            🍴 FoodOps
+        </div>
+
+        <a href="{{ url_for('menu') }}"
+           class="cart-button">
+
+            ← Back to Menu
+
+        </a>
+
+    </nav>
+
+
+    <main class="cart-container">
+
+        <h1>Your Cart 🛒</h1>
+
+
+        {% if cart %}
+
+            <div class="cart-items">
+
+                {% for item in cart %}
+
+                    <div class="cart-item">
+
+                        <span>🍽️ {{ item }}</span>
+
+                        <strong>Added</strong>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+<form method="POST" action="{{ url_for('place_order') }}">
+    <button type="submit" class="checkout-button">
+        Place Order
+    </button>
+</form>
+
+        {% else %}
+
+            <div class="empty-cart">
+
+                <div class="empty-cart-icon">
+                    🛒
+                </div>
+
+                <h2>Your cart is empty</h2>
+
+                <p>
+                    Add some delicious food to your cart.
+                </p>
+
+                <a href="{{ url_for('menu') }}"
+                   class="add-button">
+
+                    Browse Menu
+
+                </a>
+
+            </div>
+
+        {% endif %}
+
+
+    </main>
+
+
+</body>
+
+</html>
