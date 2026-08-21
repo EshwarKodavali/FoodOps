@@ -1,4 +1,14 @@
+# Python
 venv/
 __pycache__/
 *.pyc
 .env
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# SSH private keys
+*.pem
+*.key

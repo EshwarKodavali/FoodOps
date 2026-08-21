@@ -53,9 +53,17 @@ resource "aws_security_group" "foodops_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["110.226.114.214/32"]
+    cidr_blocks = ["110.226.114.171/32"]
   }
 
+  # Flask application
+  ingress {
+    description = "Flask application"
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   # HTTP
   ingress {
@@ -87,7 +95,7 @@ resource "aws_instance" "foodops" {
   security_groups = [aws_security_group.foodops_sg.name]
 
   user_data = file("${path.module}/user_data.sh")
-  
+
   key_name = aws_key_pair.foodops_key.key_name
   tags = {
     Name = "FoodOps-Server"
