@@ -105,10 +105,3 @@ resource "aws_instance" "foodops" {
     delete_on_termination = true
   }
 }
-
-
-# Display public IP
-output "foodops_public_ip" {
-
-  value = aws_instance.foodops.public_ip
-}
