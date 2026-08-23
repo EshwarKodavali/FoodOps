@@ -74,6 +74,15 @@ resource "aws_security_group" "foodops_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # HTTPS
+ingress {
+  description = "HTTPS access"
+  from_port   = 443
+  to_port     = 443
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+}
+
 
   # Outbound traffic
   egress {
