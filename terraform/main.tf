@@ -53,7 +53,7 @@ resource "aws_security_group" "foodops_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["106.192.8.236/32"]
+    cidr_blocks = ["106.221.196.134/32"]
   }
 
   # Flask application
